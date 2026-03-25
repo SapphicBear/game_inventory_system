@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/app.js",
     "start": "node src/app.js",
     "database": "dotenv -- npm run _database",
     "_database": "node ./db/populatedb.js $DATABASE_URL"
