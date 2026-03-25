@@ -2,7 +2,7 @@
   "name": "game_inventory_system",
   "version": "1.0.0",
   "description": "This is a simple example of an inventory system using express and postgresql. Made as a part of the odin project's Node.js course!",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon src/app.js",
