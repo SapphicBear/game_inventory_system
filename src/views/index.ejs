@@ -7,7 +7,22 @@
     <header>
         <%- include("./partials/header.ejs"); %>
     </header>
-
+        <main>
+            <ul>
+                <% games.map((game, i) => { %>
+                    <li> 
+                        <div class="gameContainer">
+                            <h2>Game <%= i + 1 %></h2>
+                            <p><%= game.game_name %></p>
+                            <p><%= game.studio_name %></p>
+                            <p><%= game.genre %></p>
+                            <p><%= game.release_year %></p>
+                            <p><%= game.console %></p>
+                        </div>
+                    </li>
+                <% }); %>
+            </ul>
+        </main>
 
     <footer>
         <%- include("./partials/footer.ejs", { links: links }); %>
