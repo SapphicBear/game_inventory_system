@@ -3,7 +3,7 @@ const pool = require("./pool");
 // get all items
 async function getAllGames() {
     const query = `
-    SELECT games.name AS game_name, game_studios.name AS studio_name, genre, games.release_year, game_consoles.name AS console FROM games
+    SELECT games.name AS game_name, game_studios.name AS studio_name, price, in_stock, genre, games.release_year, game_consoles.name AS console FROM games
         JOIN game_consoles 
         ON (games.console_id = game_consoles.console_id)
         JOIN game_studios
