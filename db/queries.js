@@ -7,7 +7,8 @@ async function getAllGames() {
         JOIN game_consoles 
         ON (games.console_id = game_consoles.console_id)
         JOIN game_studios
-        ON (games.studio_id = game_studios.studio_id);
+        ON (games.studio_id = game_studios.studio_id)
+    ORDER BY games.id;
     `
     const { rows } = await pool.query(query);
     return rows;

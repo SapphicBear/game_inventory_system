@@ -128,7 +128,7 @@ main {
     padding: 0.5rem;
     justify-self: stretch;
     overflow-y: auto;
-    max-height: 71.5vh
+    max-height: 71.5vh;
 }
 .gameContainer {
     padding: 1rem 3rem;
@@ -136,13 +136,13 @@ main {
     grid-template-columns: repeat(10, 1fr);
     max-width: 75vw;
     gap: 0.5rem;
-    justify-items: center;
     align-items: center;
     background-color: var(--white);
     border: 2px solid var(--border-grey);
     border-radius: 14px;
 }
 .game-info {
+    place-self: start;
     grid-column: 1 / 4;
     display: flex;
     flex-direction: column;
@@ -150,6 +150,9 @@ main {
 }
 .game-desc {
     color: grey;
+}
+.available, .not-available, .game-id, .game-price, .edit-button {
+    place-self: center;
 }
 .available {
     background: var(--green);
