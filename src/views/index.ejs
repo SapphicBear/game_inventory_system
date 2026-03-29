@@ -9,21 +9,8 @@
         <%- include("./partials/header.ejs"); %>
     </header>
         <main>
-            <ul>
-                <% games.map((game, i) => { %>
-                    <li> 
-                        <div class="gameContainer">
-                            <h2>Game <%= i + 1 %></h2>
-                            <p>Title: <%= game.game_name %></p>
-                            <p>Game Studio: <%= game.studio_name %></p>
-                            <p>Genre: <%= game.genre %></p>
-                            <p>Release Year: <%= game.release_year %></p>
-                            <p>On: <%= game.console %></p>
-                            <p>Price: <%= game.price %></p>
-                            <p>In stock: <%= game.in_stock %></p>
-                        </div>
-                    </li>
-                <% }); %>
+            <ul class="games-list">
+                <%- include("./partials/game.ejs", { games: games }); %>
             </ul>
         </main>
         <aside class="sidebar">
