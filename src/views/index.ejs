@@ -9,6 +9,15 @@
         <%- include("./partials/header.ejs"); %>
     </header>
         <main>
+            <div class="inventory-header">
+                <h2>Inventory Area</h2>
+            </div>
+            <div class="item-header"> 
+                <p>Game</p>
+                <p>In Stock</p>
+                <p>ID</p>
+                <p>Price</p>
+            </div>
             <ul class="games-list">
                 <%- include("./partials/game.ejs", { games: games }); %>
             </ul>

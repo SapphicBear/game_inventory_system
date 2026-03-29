@@ -14,8 +14,8 @@
                 <h3><%= game.in_stock %></h3>
                 <p><%= game.in_stock !== 0 ? "Available" : "Not Available" %></p>
             </div>
-            <p><%= game.id %></p>
-            <p>$<%= game.price %></p>
+            <p class="game-id"><%= game.id %></p>
+            <p class="game-price">$<%= game.price %></p>
             <a class="edit-button" href="/edit/<%= game.id %>">Edit</a>
             
         </div>
