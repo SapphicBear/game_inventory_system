@@ -49,6 +49,7 @@ li {
 :root {
     --cool-grey: rgb(228, 231, 236);
     --border-grey: rgb(164, 167, 172);
+    --dark-grey: rgb(199, 203, 207);
     --white: rgb(255, 254, 251);
     --green-border: green;
     --green: rgb(136, 255, 136);
@@ -56,23 +57,31 @@ li {
     --red-border: rgb(209, 23, 23);
     --red: rgb(255, 124, 124);
     --light-red: rgb(255, 216, 216);
+    --highlight: rgb(255, 180, 93);
+    --dark-highlight: rgb(197, 97, 39);
 }
 .wrapper {
     margin-inline: auto;
+    place-self: center;
     display: grid;
     min-height: 100vh;
     max-width: 1800px;
     grid-auto-columns: 2fr 2fr;
-    grid-template-rows: 100px 3fr 1fr;
+    grid-template-rows: 75px 3fr 1fr;
     grid-template-areas: 
         "header header header header"
         "main main main sidebar"
         "main main main sidebar"
         "main main main sidebar"
         "footer footer footer footer";
+    gap: 1rem 0rem;
 }
 header {
     grid-area: header;
+    padding: 1rem;
+    align-self: center;
+    border-bottom-left-radius: 14px;
+    border-bottom-right-radius: 14px;
 }
 main {
     border-top-left-radius: 14px;
@@ -84,7 +93,7 @@ main {
     display: grid;
     place-items: center;
     border-top-left-radius: 14px;
-    background: rgb(255, 180, 93);
+    background: var(--highlight);
 }
 .item-header {
     display: grid;
@@ -92,7 +101,9 @@ main {
     align-items: center;
     grid-template-columns: repeat(10, 1fr);
     grid-template-rows: 20px;
-    background: var(--border-grey);
+    background: var(--dark-grey);
+    border-bottom: 2px solid var(--border-grey);
+    border-top: 2px solid var(--border-grey);
     padding: 0.5rem;
     > :nth-child(1) {
         grid-column: 1 / span 3;
@@ -184,8 +195,23 @@ main {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    background-color: var(--border-grey);
+    background-color: var(--dark-grey);
+    border-left: 2px solid var(--border-grey);
 }
 footer {
+    border-top-left-radius: 14px;
+    border-top-right-radius: 14px;
+    padding: 1rem;
+    place-items: center;
     grid-area: footer;
+    display: flex;
+    flex-direction: column;
+    > ul {
+        display: flex;
+        gap: 1rem;
+    }
+}
+
+footer, header {
+    background-color: var(--dark-grey);
 }
