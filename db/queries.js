@@ -31,22 +31,48 @@ async function filterByConsole(consoleName) {
     SELECT games.name AS game_name, game_studios.name AS studio_name, price, in_stock, genre, games.release_year, games.console AS console, games.id FROM games
         JOIN game_studios
         ON (games.studio_id = game_studios.studio_id)
-        WHERE '${consoleName}' = ANY(games.console)
+        WHERE '${consoleName.consoles}' = ANY(games.console)
     ORDER BY games.id;
     `
-    const { rows } = await pool.query(query);
-    return rows;
+    const queryAlt = `
+    SELECT games.name AS game_name, game_studios.name AS studio_name, price, in_stock, genre, games.release_year, games.console AS console, games.id FROM games
+        JOIN game_studios
+        ON (games.studio_id = game_studios.studio_id)
+        WHERE '${consoleName.consoles}' = ANY(games.console) AND in_stock != '0'
+    ORDER BY games.id;
+    `;
+    if (!consoleName.inStock) {
+        const { rows } = await pool.query(query);
+        return rows;
+    } else {
+        const { rows } = await pool.query(queryAlt);
+        return rows;
+    }
+    
 }
 async function filterByGenre(genre) {
     const query = `
     SELECT games.name AS game_name, game_studios.name AS studio_name, price, in_stock, genre, games.release_year, games.console AS console, games.id FROM games
         JOIN game_studios
         ON (games.studio_id = game_studios.studio_id)
-        WHERE games.genre = '${genre}'
+        WHERE games.genre = '${genre.genres}'
     ORDER BY games.id;
     `;
-    const { rows } = await pool.query(query);
-    return rows;
+    const queryAlt = `
+    SELECT games.name AS game_name, game_studios.name AS studio_name, price, in_stock, genre, games.release_year, games.console AS console, games.id FROM games
+        JOIN game_studios
+        ON (games.studio_id = game_studios.studio_id)
+        WHERE games.genre = '${genre.genres}' AND in_stock != '0'
+    ORDER BY games.id;
+    `;
+
+    if (!genre.inStock) {
+        const { rows } = await pool.query(query);
+        return rows;
+    } else {
+        const { rows } = await pool.query(queryAlt);
+        return rows;
+    }
 }
 
 // get all items of one category

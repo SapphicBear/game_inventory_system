@@ -8,6 +8,8 @@
             <% }); %>
         </select>
     </div>
+    <input type="checkbox" id="inStock-genres" name="inStock" value="In Stock">
+    <label for="inStock-genres">Only show In Stock</label>
     <button type="submit">Search</button>
 </form>
 <form action="/consoles" method="GET">
@@ -20,5 +22,7 @@
             <% }); %>
         </select>
     </div>
+    <input type="checkbox" id="inStock-consoles" name="inStock" value="In Stock">
+    <label for="inStock-consoles">Only show In Stock</label>
     <button type="submit">Search</button>
 </form>
