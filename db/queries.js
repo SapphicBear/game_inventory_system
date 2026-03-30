@@ -27,17 +27,25 @@ async function getAllGenres() {
 }
 
 async function filterByConsole(consoleName) {
-    let name = consoleName.slice(1);
-    console.log(name)
     const query = `
     SELECT games.name AS game_name, game_studios.name AS studio_name, price, in_stock, genre, games.release_year, games.console AS console, games.id FROM games
         JOIN game_studios
         ON (games.studio_id = game_studios.studio_id)
-        WHERE '${name}' = ANY(games.console)
+        WHERE '${consoleName}' = ANY(games.console)
     ORDER BY games.id;
     `
     const { rows } = await pool.query(query);
-    console.log(rows);
+    return rows;
+}
+async function filterByGenre(genre) {
+    const query = `
+    SELECT games.name AS game_name, game_studios.name AS studio_name, price, in_stock, genre, games.release_year, games.console AS console, games.id FROM games
+        JOIN game_studios
+        ON (games.studio_id = game_studios.studio_id)
+        WHERE games.genre = '${genre}'
+    ORDER BY games.id;
+    `;
+    const { rows } = await pool.query(query);
     return rows;
 }
 
@@ -52,5 +60,6 @@ module.exports = {
     getAllConsoles,
     getAllStudios,
     getAllGenres,
-    filterByConsole
+    filterByConsole,
+    filterByGenre
 };

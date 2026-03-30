@@ -3,6 +3,7 @@ const router = Router();
 const controller = require("./../controllers/indexController");
 
 router.get("/", controller.indexGet);
-router.get("/:console_id", controller.filterByConsole);
+router.get("/consoles", controller.getFilterConsole);
+router.get("/genres", controller.getFilterGenre);
 
 module.exports = router;

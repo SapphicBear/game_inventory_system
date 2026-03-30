@@ -149,7 +149,7 @@ main {
     gap: 1rem;
 }
 .game-desc {
-    color: grey;
+    color: rgb(109, 109, 109);
 }
 .available, .not-available, .game-id, .game-price, .edit-button {
     place-self: center;

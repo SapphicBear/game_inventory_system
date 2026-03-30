@@ -1,0 +1,24 @@
+<form action="/genres" method="GET">
+    <div class="form-row">
+        <label for="genre-select">Filter by Genre: </label>
+        <select name="genres" id="genre-select">
+            <option value="">--Please choose an option--</option>
+            <% genres.map((genre) => { %>
+                <option value="<%= genre.genre %>"><%= genre.genre %></option>
+            <% }); %>
+        </select>
+    </div>
+    <button type="submit">Search</button>
+</form>
+<form action="/consoles" method="GET">
+    <div class="form-row">
+        <label for="consoles-select">Filter by Consoles: </label>
+        <select name="consoles" id="consoles-select">
+            <option value="">--Please choose an option--</option>
+            <% consoles.map((console) => { %>
+                <option value="<%= console.name %>"><%= console.name.replace("_", " "); %></option>
+            <% }); %>
+        </select>
+    </div>
+    <button type="submit">Search</button>
+</form>
