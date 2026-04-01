@@ -47,10 +47,10 @@ li {
     list-style: none;
 }
 :root {
-    --cool-grey: rgb(228, 231, 236);
-    --border-grey: rgb(164, 167, 172);
+    --cool-grey: rgb(240, 242, 248);
+    --border-grey: rgb(156, 160, 165);
     --dark-grey: rgb(199, 203, 207);
-    --white: rgb(255, 254, 251);
+    --white: rgb(255, 255, 255);
     --green-border: green;
     --green: rgb(136, 255, 136);
     --light-green: rgb(230, 255, 216);
@@ -105,6 +105,9 @@ main.edit {
     background: var(--dark-grey);
     justify-items: center;
     align-content: center;
+}
+h2 {
+    font-size: 20px;
 }
 .inventory-header {
     display: grid;
@@ -195,7 +198,7 @@ main.edit {
     gap: 1rem;
     text-align: center;
     flex-shrink: 0;
-    > h3 {
+    > h4 {
         margin-top: 1rem;
     }
     > p {

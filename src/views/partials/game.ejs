@@ -2,7 +2,7 @@
     <li>
         <div class="gameContainer">
             <div class="game-info">
-                <h2><%= game.game_name %></h2>
+                <h3><%= game.game_name %></h3>
                 <div class="game-desc">
                 <p>Studio: <%= game.studio_name %></p>
                 <p>Genre: <%= game.genre %></p>
@@ -11,7 +11,7 @@
                 </div>
             </div>
             <div class="<%= game.in_stock !== 0 ? "available" : "not-available" %>">
-                <h3><%= game.in_stock %></h3>
+                <h4><%= game.in_stock %></h4>
                 <p><%= game.in_stock !== 0 ? "Available" : "Not Available" %></p>
             </div>
             <p class="game-id"><%= game.id %></p>
