@@ -34,6 +34,12 @@
                     <legend>Store information</legend>
                 <div class="edit form-row">
                     <label for="consoles">Available on: </label>
+                    <div class="console-area">
+                    <% data.console.map((con) => { %>
+                        <input type="text" id="<%= con %>" value="<%= con.replaceAll("_", " ") %>">
+                        <!-- <button type="button" class="delete-button">X</button> -->
+                    <% }); %>
+                    </div>
                     <!-- TODO: add multi select for consoles, can remove existing ones -->
                 </div>
                 <div class="edit form-row">
