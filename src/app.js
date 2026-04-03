@@ -2,7 +2,8 @@ const express = require("express");
 const path = require("node:path");
 require("@dotenvx/dotenvx").config();
 const indexRouter = require("./routes/indexRouter");
-const editRouter = require("./routes/editRouter")
+const editRouter = require("./routes/editRouter");
+const newRouter = require("./routes/newRouter");
 const app = express();
 const PORT = process.env.PORT || 3000;
 app.set("views", path.join(__dirname, "views"));
@@ -13,6 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/", indexRouter);
 app.use("/edit", editRouter);
+app.use("/new", newRouter);
 
 app.listen(PORT, (error) => {
     if (error) {
