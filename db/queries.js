@@ -28,7 +28,6 @@ async function getAllGenres() {
 
 async function remainingConsoles(consoleName) {
     let consoles = consoleName;
-    console.log(consoles)
     const query = `
     SELECT name FROM game_consoles
         WHERE name NOT IN (${consoles.map((con) => { return `'${con}'`})})

@@ -64,8 +64,7 @@
                 <button type="submit">Submit Changes</button>
                 <button type="button">Cancel</button>
             </form>
-        </main>
-        <aside>
+            <aside>
             <ul>
                 <% if (errors) { %>
             <% errors.map((error) => { %>
@@ -74,6 +73,8 @@
             <%}%>
             </ul>
         </aside>
+        </main>
+        
         <footer>
             <%- include("./partials/footer.ejs", { links: links }); %>
         </footer>

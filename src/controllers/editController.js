@@ -6,7 +6,6 @@ const links = require("./links");
 async function getEdit(req, res) {
     const game = await db.getSelectedGame(req.params);
     let temp = game[0].console[0];
-    console.log(temp)
     const consoles = await db.remainingConsoles(temp);
     res.render("edit", { links: links, game: game, errors: "", consoles: consoles });
 }
@@ -78,7 +77,6 @@ const updateEdit = [
                 });
                 return;
         }
-        console.log(game)
         await db.updateGameInfo(game);
         res.redirect("/");
     },

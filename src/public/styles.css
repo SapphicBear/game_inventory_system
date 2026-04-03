@@ -16,6 +16,7 @@
 body {
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
+    min-block-size: 100svh;
 }
 img {
     max-width: 100%;
@@ -66,10 +67,10 @@ li {
 .wrapper {
     margin-inline: auto;
     display: grid;
-    height: 100vh;
+    min-block-size: 100svh;
     max-width: 1700px;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 75px 3fr 1fr;
+    grid-template-rows: auto 1fr auto;
     grid-template-areas: 
         "header header header header"
         "main main main sidebar"
