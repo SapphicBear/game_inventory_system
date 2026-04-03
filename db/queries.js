@@ -150,6 +150,7 @@ async function postNewItem(item) {
     `;
     await pool.query(query);
 }
+
 // get all items of one category
 
 // delete items (DELETE)

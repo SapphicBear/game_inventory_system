@@ -29,7 +29,7 @@
                     <label for="studio">Game Studio: </label>
                     <select name="studio" id="studio">
                         <option value="" disabled hidden>Add a console</option>
-                        <option value="null"></option>
+                        
                         <% studios.map((studio) => { %>
                             <%
                                 let selected = (studio.name == data.studio_name) ? "selected" : "";

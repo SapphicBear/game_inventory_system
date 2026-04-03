@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS game_studios (
 CREATE TABLE IF NOT EXISTS games (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     name VARCHAR(255),
-    studio_id INTEGER NOT NULL REFERENCES game_studios(studio_id),
+    studio_id INTEGER REFERENCES game_studios(studio_id),
     console TEXT[],
     genre VARCHAR(255),
     release_year VARCHAR(200),
