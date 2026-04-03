@@ -4,7 +4,8 @@ const links = require("./links");
 
 async function getNew(req, res) {
     const consoles = await db.getAllConsoles();
-    res.render("new", { links: links, consoles: consoles, errors: "" });
+    const studios = await db.getAllStudios();
+    res.render("new", { links: links, consoles: consoles, errors: "" , studios: studios});
 }
 const postNew = [
     body("name")
@@ -34,7 +35,7 @@ const postNew = [
         .escape()
         .toArray()
         .isLength({ min: 1 })
-        .withMessage("Console(s) must be specified."),
+        .withMessage("Console must be specified."),
     body("in_stock")
         .trim()
         .escape()
@@ -72,7 +73,7 @@ const postNew = [
                         });
                         return;
                 }
-                
+                await db.postNewItem(game);
                 res.redirect("/");
             },
 ];

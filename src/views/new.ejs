@@ -22,7 +22,12 @@
                 </div>
                 <div class="new form-row">
                     <label for="studio">Game Studio: </label>
-                    <input type="text" name="studio" id="studio" required>
+                    <select name="studio" id="studio">
+                        <option value="" selected disabled hidden>Select a Studio</option>
+                        <% studios.map((studio) => { %>
+                            <option value="<%= studio.name %>"><%= studio.name %></option>
+                        <% }); %>
+                    </select>
                 </div>
                 <div class="new form-row">
                     <label for="release_year">Release year: </label>
@@ -33,15 +38,12 @@
                     <legend>Store information</legend>
                 <div class="new form-row">
                     <label for="console">Available on: </label>
-                    <div class="console-area">
                     <select name="console" id="console">
                         <option value="" selected disabled hidden>Select a Console</option>
                         <% consoles.map((console) => { %>
                             <option value="<%= console.name %>"><%= console.name %></option>
                         <% }); %>
                     </select>
-                    
-                    </div>
                     <!-- TODO: add multi select for consoles, can remove existing ones -->
                 </div>
                 <div class="new form-row">

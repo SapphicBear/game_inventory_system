@@ -91,7 +91,7 @@ async function getSelectedGame(game) {
     SELECT games.name AS game_name, game_studios.name AS studio_name, price, in_stock, genre, games.release_year, games.console, games.id FROM games
         JOIN game_studios
         ON (games.studio_id = game_studios.studio_id)
-    WHERE games.name = '${game.game_name}'
+    WHERE games.id = '${game.id}'
     ORDER BY games.id;
     `;
     const { rows } = await pool.query(query);
@@ -104,6 +104,23 @@ async function updateGameInfo(info) {
     SET name = '${info.game_name}', genre = '${info.genre}', studio_id = (SELECT studio_id FROM game_studios
                 WHERE game_studios.name = '${info.studio_name}'), release_year = '${info.release_year}', in_stock = '${info.in_stock}', price = '${info.price}', console = '{{${info.console}}}'
         WHERE id = ${info.id};
+    `;
+    await pool.query(query);
+}
+
+async function postNewItem(item) {
+    const query = `
+    INSERT INTO games (name, studio_id, console, genre, release_year, price, in_stock) 
+        VALUES (
+        '${item.game_name}',
+        (SELECT studio_id FROM game_studios 
+            WHERE name = '${item.studio_name}'),
+        '{{${item.console}}}',
+        '${item.genre}',
+        '${item.release_year}',
+        '${item.price}',
+        '${item.in_stock}'
+        );
     `;
     await pool.query(query);
 }
@@ -122,5 +139,6 @@ module.exports = {
     filterByGenre,
     getSelectedGame,
     updateGameInfo,
-    remainingConsoles
+    remainingConsoles,
+    postNewItem
 };
