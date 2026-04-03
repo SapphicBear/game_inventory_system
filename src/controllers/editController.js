@@ -9,8 +9,9 @@ async function getEdit(req, res) {
     if (!Array.isArray(temp)) {
         temp = [temp];
     }
-    const consoles = await db.remainingConsoles(temp);
-    res.render("edit", { links: links, game: game, errors: "", consoles: consoles });
+    const consoles = await db.getAllConsoles();
+    const studios = await db.getAllStudios();
+    res.render("edit", { links: links, game: game, errors: "", consoles: consoles, studios: studios });
 }
 
 const updateEdit = [
@@ -21,9 +22,7 @@ const updateEdit = [
         .withMessage("Name of game must be specified."),
     body("studio")
         .trim()
-        .isLength({ min: 1 })
-        .escape()
-        .withMessage("Studio name must be specified."),
+        .escape(),
     body("genre")
         .trim()
         .escape()
@@ -39,9 +38,7 @@ const updateEdit = [
     body("console")
         .trim()
         .escape()
-        .toArray()
-        .isLength({ min: 1 })
-        .withMessage("Console(s) must be specified."),
+        .toArray(),
     body("in_stock")
         .trim()
         .escape()

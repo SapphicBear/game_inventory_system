@@ -27,7 +27,21 @@
                 </div>
                 <div class="edit form-row">
                     <label for="studio">Game Studio: </label>
-                    <input type="text" name="studio" id="studio" value="<%= data.studio_name %>">
+                    <select name="studio" id="studio">
+                        <option value="" disabled hidden>Add a console</option>
+                        <option value="null"></option>
+                        <% studios.map((studio) => { %>
+                            <%
+                                let selected = (studio.name == data.studio_name) ? "selected" : "";
+                            %>
+                            <option 
+                                value="<%= studio.name %>"
+                                <%= selected %>
+                                >
+                                    <%= studio.name %>
+                            </option>
+                        <% }); %>
+                    </select>
                 </div>
                 <div class="edit form-row">
                     <label for="release_year">Release year: </label>
@@ -38,17 +52,17 @@
                     <legend>Store information</legend>
                 <div class="edit form-row">
                     <label for="console">Available on: </label>
-                    <div class="console-area">
-                    <% data.console.map((con) => { %>
-                        <input type="text" id="<%= con %>" name="console" value="<%= con %>">
-                    <% }); %>
                     <select name="console" id="add-console">
-                        <option value="" selected disabled hidden>Add a new console?</option>
+                        <option value="" selected disabled hidden>Add a console</option>
+                        <option value="null"></option>
                         <% consoles.map((console) => { %>
-                            <option value="<%= console.name %>"><%= console.name %></option>
+                            <%
+                                let selected = (console.name == data.console) ? "selected" : "";
+                            %>
+                            <option value="<%= console.name %>" <%= selected %>><%= console.name %></option>
                         <% }); %>
                     </select>
-                    </div>
+                    
                     <!-- TODO: add multi select for consoles, can remove existing ones -->
                 </div>
                 <div class="edit form-row">
