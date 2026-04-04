@@ -422,3 +422,59 @@ fieldset {
     border: 2px solid var(--border-grey);
     border-radius: 14px;
 }
+
+@media (max-width: 850px) {
+    .wrapper {
+        display: flex;
+        max-width: 100vw;
+        min-height: 100vh;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: stretch;
+        justify-items: stretch;
+        
+    }
+    .wrapper.edit, .wrapper.new, .wrapper.new-console, .wrapper.new-studio {
+        display: grid;
+        max-width: 100vw;
+        flex-direction: column;
+    }
+    section {
+        min-width: 70vw;
+    }
+    header {
+        min-width: 100vw;
+    }
+    main {
+        padding: 1rem;
+        border-top-right-radius: 14px;
+        border-bottom-right-radius: 14px;
+    }
+    .inventory-header {
+        border-top-right-radius: 14px;
+    }
+    .sidebar {
+        border-bottom-left-radius: 14px;
+        border-top-left-radius: 14px;
+    }
+    .edit.form-row, .new.form-row, .new-studio.form-row, .new-console.form-row {
+        grid-template-columns: repeat(2, minmax(120px, 1fr));
+    }
+}
+
+@media (max-width: 500px) {
+    .gameContainer {
+        display: grid;
+        align-content: space-around;
+        
+        > * {
+            grid-row: 2;
+        }
+    }
+    .game-info {
+        flex-direction: row;
+        grid-column: 1/ -1;
+        grid-row: 1;
+    }
+    
+}
