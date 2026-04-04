@@ -8,12 +8,12 @@ async function getNew(req, res) {
     res.render("new", { links: links, consoles: consoles, errors: "" , studios: studios});
 }
 const postNew = [
-    body("name")
+    body("game_name")
         .trim()
         .isLength({ min: 1 })
         .escape()
         .withMessage("Name of game must be specified."),
-    body("studio")
+    body("studio_name")
         .trim()
         .isLength({ min: 1 })
         .escape()
@@ -52,20 +52,19 @@ const postNew = [
         .withMessage("Price must be set."),
 
         async (req, res, next) => {
-            
-                const studios = await db.getAllStudios();
-                const errors = validationResult(req);
-                const consoles = await db.getAllConsoles();
-                const game = {
-                    game_name: req.body.name,
-                    id: req.body.id,
-                    studio_name: req.body.studio,
+            const errors = validationResult(req);
+            const studios = await db.getAllStudios();
+            const consoles = await db.getAllConsoles();
+            const game = {
+                    game_name: req.body.game_name,
+                    studio_name: req.body.studio_name,
                     genre: req.body.genre,
                     release_year : req.body.release_year,
                     console: req.body.console,
                     in_stock: req.body.in_stock,
                     price: req.body.price
-                };
+                    };
+            console.log(game);
                 if (!errors.isEmpty()) {
                     res.render("new", 
                         { 
@@ -75,10 +74,10 @@ const postNew = [
                             studios: studios,
                             game: game,
                         });
-                        return;
+                } else {
+                    await db.postNewItem(game);
+                    res.redirect("/");
                 }
-                await db.postNewItem(game);
-                res.redirect("/");
             },
 ];
 module.exports = {
