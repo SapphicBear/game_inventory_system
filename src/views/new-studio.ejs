@@ -9,6 +9,15 @@
             <%- include("./partials/header.ejs"); %>
         </header>
         <main class="new-studio">
+            
+            <% if (errors) { %>
+                <aside>
+                    <% errors.map((error) => { %>
+                    <span class="error"><%= error.msg %></span>
+                <% }); %>
+                    </aside>
+                <%}%>
+        
             <form action="/new-studio" method="POST" class="new-studio-form">
                 <div class="new-studio form-row">
                     <label for="name">Studio Name: </label>
@@ -21,15 +30,6 @@
                 <button type="submit">Submit</button>
                 <a class="button" href="/">Cancel</a>
             </form>
-            <aside>
-                <ul>
-                    <% if (errors) { %>
-                <% errors.map((error) => { %>
-                    <li><%= error.msg %></li>
-                <% }); %>
-                <%}%>
-                </ul>
-        </aside>
         </main>
         
         <footer>

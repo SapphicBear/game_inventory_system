@@ -10,9 +10,11 @@
         </header>
         <main class="delete">
             <h2>Delete items from the Database</h2>
+            <% if (error) { %>
             <span class="error">
                 <%= error ? error : "" %>
             </span>
+            <% } %>
             <div class="item-area">
             <section class="games">
                 <h3>Games</h3>

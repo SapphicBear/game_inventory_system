@@ -31,9 +31,11 @@ const postNewStudio = [
                     errors: errors.array(),
                     links: links,
                 });
+        } else {
+            await db.postNewStudio(studio);
+            res.redirect("/");
         }
-        await db.postNewStudio(studio);
-        res.redirect("/");
+        
     },
 ];
 

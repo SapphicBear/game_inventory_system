@@ -95,6 +95,13 @@ li {
         "main main main sidebar"
         "footer footer footer footer";
 }
+.error {
+    background: var(--red);
+    border: solid 2px var(--red-border);
+    padding: 0.25rem;
+    border-radius: 8px;
+    font-weight: 600;
+}
 header {
     grid-area: header;
     padding: 1rem;

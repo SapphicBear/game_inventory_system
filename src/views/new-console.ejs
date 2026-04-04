@@ -9,6 +9,13 @@
             <%- include("./partials/header.ejs"); %>
         </header>
         <main class="new-console">
+            <% if (errors) { %>
+                    <aside>
+                        <% errors.map((error) => { %>
+                        <span class="error"><%= error.msg %></span>
+                        <% }); %>
+                    </aside>
+                <%}%>
             <form action="/new-console" method="POST" class="new-console-form">
                 <div class="new-console form-row">
                     <label for="name">Console Name: </label>
@@ -22,15 +29,7 @@
                 <button type="submit">Submit</button>
                 <a class="button" href="/">Cancel</a>
             </form>
-            <aside>
-                <ul>
-                    <% if (errors) { %>
-                <% errors.map((error) => { %>
-                    <li><%= error.msg %></li>
-                <% }); %>
-                <%}%>
-                </ul>
-        </aside>
+                
         </main>
         
         <footer>

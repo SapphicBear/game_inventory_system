@@ -27,14 +27,16 @@ const postNewConsole = [
             release_year: req.body.release_year,
         };
         if (!errors.isEmpty()) {
-            res.render("new-studio", 
+            res.render("new-console", 
                 {
                     errors: errors.array(),
                     links: links,
                 });
+        } else {
+            await db.postNewConsole(con);
+            res.redirect("/");
         }
-        await db.postNewConsole(con);
-        res.redirect("/");
+        
     },
 
 ];
