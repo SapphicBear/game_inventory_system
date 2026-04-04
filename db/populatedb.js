@@ -48,6 +48,16 @@ INSERT INTO games (name, studio_id, console, genre, release_year, price, in_stoc
         '10.99',
         '25'
         );
+INSERT INTO games (name, studio_id, console, genre, release_year, price, in_stock)
+    VALUES (
+        'Team Fortress 2', 
+        (SELECT studio_id FROM game_studios WHERE name = 'Valve'),
+        (SELECT ARRAY_AGG(game_consoles.name) AS console FROM game_consoles WHERE game_consoles.name = 'Xbox_360'),
+        'FPS',
+        '2007',
+        '0.00',
+        '0'
+        );
 `;
 
 async function main(arg) {
