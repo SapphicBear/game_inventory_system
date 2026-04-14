@@ -22,7 +22,7 @@ async function getAllStudios() {
 }
 
 async function getAllGenres() {
-    const { rows } = await pool.query("SELECT genre FROM games;");
+    const { rows } = await pool.query("SELECT DISTINCT genre FROM games;");
     return rows;
 }
 
@@ -175,24 +175,22 @@ async function postNewConsole(con) {
 
 async function deleteGame(game) {
     const query = `
-    DELETE FROM games WHERE games.id = '${game.game}';
+    DELETE FROM games WHERE games.id = '$1';
     `;
-    await pool.query(query);
+    await pool.query(query, [game.id]);
 }
 async function deleteConsole(con) {
     const query = `
-    DELETE FROM game_consoles WHERE console_id = '${con.console}';
+    DELETE FROM game_consoles WHERE console_id = '$1';
     `;
-    await pool.query(query);
+    await pool.query(query, [con.console]);
 }
 async function deleteStudio(studio) {
     
         const query = `
-    DELETE FROM game_studios WHERE studio_id = '${studio.studio}';
+    DELETE FROM game_studios WHERE studio_id = '$1';
     `;
-    await pool.query(query);
-   
-    
+    await pool.query(query, [studio.studio]); 
 }
 
 module.exports = {
