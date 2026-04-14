@@ -42,7 +42,7 @@ INSERT INTO games (name, studio_id, console, genre, release_year, price, in_stoc
     VALUES (
         'Fallout: New Vegas', 
         (SELECT studio_id FROM game_studios WHERE name = 'Obsidian Entertainment'),
-        (SELECT ARRAY_AGG(game_consoles.name) AS console FROM game_consoles WHERE game_consoles.name IN ('PC', 'Xbox_360', 'PlayStation_3')),
+        (SELECT ARRAY_AGG(game_consoles.name) AS console FROM game_consoles WHERE game_consoles.name = 'Xbox_360'),
         'RPG',
         '2010',
         '10.99',
